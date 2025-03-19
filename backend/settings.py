@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'rest_framework'
 ]
 
+ASGI_APPLICATION = "chessvlmbackend.asgi.application"
+
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels.layers.InMemoryChannelLayer',
