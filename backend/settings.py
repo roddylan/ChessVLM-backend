@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'rest_framework'
 ]
 
-ASGI_APPLICATION = "chessvlmbackend.asgi.application"
+ASGI_APPLICATION = "backend.asgi.application"
 
 CHANNEL_LAYERS = {
     'default': {
