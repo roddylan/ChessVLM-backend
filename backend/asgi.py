@@ -15,7 +15,7 @@ from channels.routing import ProtocolTypeRouter, URLRouter, get_default_applicat
 from channels.auth import AuthMiddlewareStack
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
-django.setup()
+# django.setup()
 # application = get_asgi_application()
 application = ProtocolTypeRouter({
     "http": get_asgi_application(),
