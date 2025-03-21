@@ -3,6 +3,7 @@ import json
 import bot
 import bot.chessllm
 import bot.constants as constants
+import os
 
 '''
 Websocket consumer for chess game
@@ -61,9 +62,11 @@ class ChessLLMConsumer(AsyncWebsocketConsumer):
         data = json.loads(text_data)
         # print(f"\n\n{data=}\n\n")
         fen = data.get("fen", constants.STARTING_FEN)
-        api = data.get("api")
+        api = data.get("api", os.getenv("API_KEY"))
         player = data.get("player", "w")
         opponent = data.get("opponent", "b")
+        print("rec data")
+        print(data)
         
         # TODO: make async, maybe use asyncio
         resp = bot.chessllm.run_gemini(
