@@ -62,6 +62,7 @@ class ChessLLMConsumer(AsyncWebsocketConsumer):
         data = json.loads(text_data)
         # print(f"\n\n{data=}\n\n")
         fen = data.get("fen", constants.STARTING_FEN)
+        # api = data.get("api", "")
         api = data.get("api", os.getenv("API_KEY"))
         # print(f"{api=}")
         # print(f"{os.getenv("API_KEY")=}")
