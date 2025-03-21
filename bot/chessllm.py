@@ -86,10 +86,11 @@ def run_gemini(gem: str, model: str="gemini-2.0-flash-lite", player='w', opponen
     '''
     res = {
         "fen": "",
+        "move": "",
         "resp": "",
         "isvalid": False,
         "iserr": False,
-        "err": ""
+        "err": "",
     }
 
     # llm = HuggingFaceEndpoint(
@@ -125,7 +126,10 @@ def run_gemini(gem: str, model: str="gemini-2.0-flash-lite", player='w', opponen
     try:
         resp = llm.invoke(invoked)
         valid = chess.Board(resp.content.split('FEN: ')[-1].strip()).is_valid()
-        new_fen = resp.content.split('FEN: ')[-1].strip()
+        content = resp.content.split('FEN: ')
+        res["resp"] = content
+        new_fen = content[-1].strip()
+        move_str = content[0].strip()
         
         if not valid:
             res["isvalid"] = False
@@ -133,7 +137,7 @@ def run_gemini(gem: str, model: str="gemini-2.0-flash-lite", player='w', opponen
             res["isvalid"] = True
         
         res["iserr"] = False
-        # res["resp"] = resp
+        res["move"] = move_str
         res["fen"] = new_fen
 
         print(f"\n\n{resp}\n\n")
