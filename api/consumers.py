@@ -57,9 +57,9 @@ class ChessLLMConsumer(AsyncWebsocketConsumer):
         # return await super().disconnect(code)
     
     async def receive(self, text_data=None, bytes_data=None):
-        print(f"\n\n{text_data=}\n\n")
+        # print(f"\n\n{text_data=}\n\n")
         data = json.loads(text_data)
-        print(f"\n\n{data=}\n\n")
+        # print(f"\n\n{data=}\n\n")
         fen = data.get("fen", constants.STARTING_FEN)
         api = data.get("api")
         player = data.get("player", "w")
