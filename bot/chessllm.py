@@ -120,7 +120,7 @@ def run_gemini(gem: str, model: str="gemini-2.0-flash-lite", player='w', opponen
     )
 
     invoked = template.invoke(
-        {"fen": f"{STARTING_FEN}",
+        {"fen": f"{fen}",
         "player": ptop[player.lower()],
         "bot": ptop[opponent.lower()]}
     )

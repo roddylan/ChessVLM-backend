@@ -69,6 +69,9 @@ class ChessLLMConsumer(AsyncWebsocketConsumer):
         opponent = data.get("opponent", "b")
         # print("rec data")
         # print(data)
+        print("\nreceived data:\n")
+        print(data)
+        print("\n--------------\n")
         
         # TODO: make async, maybe use asyncio
         resp = bot.chessllm.run_gemini(
