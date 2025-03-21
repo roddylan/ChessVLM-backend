@@ -71,14 +71,15 @@ class ChessLLMConsumer(AsyncWebsocketConsumer):
         # print(data)
         
         # TODO: make async, maybe use asyncio
-        # resp = bot.chessllm.run_gemini(
-        #     gem=api,
-        #     player=player,
-        #     opponent=opponent,
-        #     fen=fen
-        # )
+        resp = bot.chessllm.run_gemini(
+            gem=api,
+            player=player,
+            opponent=opponent,
+            fen=fen
+        )
 
-        await self.send(text_data=json.dumps({"api": api}))
+        await self.send(text_data=json.dumps(resp))
+        # await self.send(text_data=json.dumps({"api": api}))
 
         # return await super().receive(text_data, bytes_data)
     
