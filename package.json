@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "gunicorn --bind 0.0.0.0:8000 -w 4 -k uvicorn.workers.UvicornWorker backend.asgi",
-    "docker": "docker-compose down --remove-orphans && docker-compose up --build"
+    "docker-rebuild": "docker-compose down --remove-orphans && docker-compose up --build",
+    "down": "docker-compose down --remove-orphans",
+    "docker": "docker-compose up"
   },
   "repository": {
     "type": "git",
