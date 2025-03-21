@@ -5,7 +5,10 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from .constants import STARTING_FEN 
 import chess
 
-
+ptop = {
+    "w": "white",
+    "b": "black",
+}
 
 def run_hf(hf: str, model: str, player='w', opponent='b', fen = STARTING_FEN):
     '''
@@ -118,8 +121,8 @@ def run_gemini(gem: str, model: str="gemini-2.0-flash-lite", player='w', opponen
 
     invoked = template.invoke(
         {"fen": f"{STARTING_FEN}",
-        "player": "black",
-        "bot": "white"}
+        "player": ptop[player.lower()],
+        "bot": ptop[opponent.lower()]}
     )
 
 
