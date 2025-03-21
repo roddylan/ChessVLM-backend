@@ -4,7 +4,9 @@
   "description": "backend for chessvlm",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gunicorn --bind 0.0.0.0:8000 -w 4 -k uvicorn.workers.UvicornWorker backend.asgi",
+    "docker": "docker-compose down --remove-orphans && docker-compose up --build"
   },
   "repository": {
     "type": "git",
