@@ -2,6 +2,7 @@ from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
 import json
 import bot
 import bot.chessllm
+import bot.constants as constants
 
 '''
 Websocket consumer for chess game
@@ -38,7 +39,10 @@ class ChessLLMConsumer(AsyncWebsocketConsumer):
         #     "message": "Connected to server"
         # }))
         # return await super().connect()
-        self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
+        # self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
+        
+        # TODO: generate uuid for each instance
+        self.room_name = "chess1"
         self.room_group_name = f"chess_{self.room_name}"
 
         # Join room group
@@ -53,8 +57,10 @@ class ChessLLMConsumer(AsyncWebsocketConsumer):
         # return await super().disconnect(code)
     
     async def receive(self, text_data=None, bytes_data=None):
+        print(f"\n\n{text_data=}\n\n")
         data = json.loads(text_data)
-        fen = data.get("fen")
+        print(f"\n\n{data=}\n\n")
+        fen = data.get("fen", constants.STARTING_FEN)
         api = data.get("api")
         player = data.get("player", "w")
         opponent = data.get("opponent", "b")
