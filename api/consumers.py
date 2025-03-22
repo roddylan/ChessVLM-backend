@@ -7,32 +7,7 @@ import os
 
 '''
 Websocket consumer for chess game
-
-
 '''
-# class ChessLLMConsumer(WebsocketConsumer):
-#     def connect(self):
-#         self.accept()
-
-#     def disconnect(self, code):
-#         return super().disconnect(code)
-    
-#     def receive(self, text_data=None, bytes_data=None):
-#         text_data 
-#         return super().receive(text_data, bytes_data)
-
-# class ChessLLMConsumer(AsyncWebsocketConsumer):
-#     def connect(self):
-#         await self.send(text_data=json.dumps()
-#         return super().connect()
-    
-#     def disconnect(self, code):
-#         return super().disconnect(code)
-    
-#     def receive(self, text_data=None, bytes_data=None):
-#         return super().receive(text_data, bytes_data)
-
-
 class ChessLLMConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         # await self.accept()
