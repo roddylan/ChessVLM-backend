@@ -119,11 +119,11 @@ def run_gemini(gem: str, model: str="gemini-2.0-flash-lite", player='w', opponen
         # template="We are playing a chess game. I am {player}, you are {bot}. Make a move and respond with the FULL FEN string resulting from your move. The current FEN is {fen}"
     )
 
-    invoked = template.invoke(
-        {"fen": f"{fen}",
+    invoked = template.invoke({
+        "fen": f"{fen}",
         "player": ptop[player.lower()],
-        "bot": ptop[opponent.lower()]}
-    )
+        "bot": ptop[opponent.lower()]
+    })
 
 
     try:
