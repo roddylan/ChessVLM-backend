@@ -108,6 +108,8 @@ def run_gemini(gem: str, model: str="gemini-2.0-flash-lite", player='w', opponen
 
     )
 
+    is_valid = False
+    count = 0
 
     template = PromptTemplate(
         input_variables=["fen", "player", "bot"],
@@ -118,6 +120,22 @@ def run_gemini(gem: str, model: str="gemini-2.0-flash-lite", player='w', opponen
         '''
         # template="We are playing a chess game. I am {player}, you are {bot}. Make a move and respond with the FULL FEN string resulting from your move. The current FEN is {fen}"
     )
+
+    fail_template = PromptTemplate(
+        input_variables=["fen", "player", "bot", "bad_fen"],
+        template='''We are playing a chess game (me vs you). I am {player}, and you are {bot}. It is your turn to move. Respond with your move in standard chess notation (e.g., 'e4') followed by the FULL FEN string after your move. The current FEN is: "{fen}", you previously provided {bad_fen}, but this is an invalid position.
+        Format your response exactly as follows:
+        Move: [your move]
+        FEN: [resulting FEN string]
+        '''
+    )
+
+    check_template = PromptTemplate(
+        input_variables=["fen", "player", "bot", "next_fen", "move"],
+        template="We are playing a chess game (me vs you). I am {player}, and you are {bot}. You just attempted to make a move: {move}. The previous FEN is '{fen}'. The resultant FEN you gave is '{fen}'. Is this valid? (ANSWER ONLY IN ONE LETTER Y/N)"
+    )
+    # while is_valid and count < 3:
+    
 
     invoked = template.invoke({
         "fen": f"{fen}",
