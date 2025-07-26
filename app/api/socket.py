@@ -8,6 +8,6 @@ async def chess(socket: WebSocket):
     await socket.accept()
     while True:
         data = await socket.receive_json()
-
+        
     
     return 

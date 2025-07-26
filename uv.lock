@@ -102,6 +102,7 @@ dependencies = [
     { name = "langchain" },
     { name = "langchain-google-genai" },
     { name = "langchain-huggingface" },
+    { name = "pydantic" },
     { name = "websockets" },
 ]
 
@@ -112,6 +113,7 @@ requires-dist = [
     { name = "langchain", specifier = ">=0.3.27" },
     { name = "langchain-google-genai", specifier = ">=2.1.8" },
     { name = "langchain-huggingface", specifier = ">=0.3.1" },
+    { name = "pydantic", specifier = ">=2.11.7" },
     { name = "websockets", specifier = ">=15.0.1" },
 ]
 
