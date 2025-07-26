@@ -22,13 +22,6 @@ graph TB
 
     Client <--> API
     API --> LLM
-    API --> Producer
-    API --> db
-    API --> cache
-    Producer --> Kafka
-    Kafka --> Consumer
-    Consumer --> db
-    Consumer --> cache
 
 ```
 
@@ -47,22 +40,4 @@ sequenceDiagram
     C ->> A: WebSocket handshake
     A ->> L: Fetch move
     L -->> A: Chess move
-    A ->> K: Produce Chess Move event
-    A -->> C: Receive Chess move
-    K ->> ST: Consume Chess Move event
-    ST ->> DB: Fetch LLM statistics
-    ST ->> ST: Validate move and compute statistics
-    ST ->> DB: Update and Store LLM Statistics
-```
-
-Get Statistics
-```mermaid
-sequenceDiagram
-    participant C as Client
-    participant A as FastAPI
-    participant DB as PostgreSQL
-
-    C ->> A: GET /stats
-    A ->> DB: Fetch LLM stats
-    A -->> C: Return LLM stats
 ```
