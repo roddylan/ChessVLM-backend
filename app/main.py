@@ -4,4 +4,4 @@ from app.api import socket
 
 app = FastAPI()
 
-app.include_router(socket.router, '/ws')
+app.include_router(socket.router, '/ws', tags=['chess'])
