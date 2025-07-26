@@ -12,4 +12,4 @@ services:
       GEMINI_KEY: ${GEMINI_KEY}
     env_file:
       - .env
-volumes:
+# volumes:
