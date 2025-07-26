@@ -2,7 +2,7 @@ from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain_google_genai import ChatGoogleGenerativeAI
-from .constants import STARTING_FEN 
+from app.services.bot.constants import STARTING_FEN 
 import chess
 
 ptop = {
