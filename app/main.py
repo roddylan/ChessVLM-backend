@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from app.api import socket
+from app.api.routers import router
 
 
 app = FastAPI()
 
-app.include_router(socket.router, '/ws', tags=['chess'])
+app.include_router(router)
