@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Websocket
+from fastapi import FastAPI
 from app.api import socket
 
 
