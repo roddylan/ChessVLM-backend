@@ -3,4 +3,4 @@ import app.api.socket as socket
 
 router = APIRouter()
 
-router.include_router(socket.router, '/ws', ['chess'])
+router.include_router(socket.router, prefix='/ws', tags=['chess'])

@@ -5,6 +5,7 @@ from app.services.bot.chessllm import run_gemini
 
 
 router = APIRouter()
+
 @router.websocket("/chess")
 async def chess(socket: WebSocket):
     await socket.accept()
