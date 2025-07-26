@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Websocket
-from app.api.socket import router as socket_router
+from app.api import socket
 
 
 app = FastAPI()
 
-app.add_api_websocket_route('/ws', socket_router)
+app.include_router(socket.router, '/ws')
