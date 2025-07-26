@@ -1,4 +1,5 @@
 # Architecture
+*planned*
 ```mermaid
 graph TB
     subgraph "ChessLLM Service"
