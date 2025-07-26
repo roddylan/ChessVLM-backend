@@ -5,7 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "chess>=1.11.2",
     "fastapi>=0.116.1",
     "langchain>=0.3.27",
+    "langchain-google-genai>=2.1.8",
+    "langchain-huggingface>=0.3.1",
     "websockets>=15.0.1",
 ]
