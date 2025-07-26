@@ -1,6 +1,10 @@
 services:
   api:
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/cvlmback
     container_name: cvlm
     ports:
       - "8000:8000"
