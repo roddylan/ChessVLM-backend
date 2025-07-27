@@ -23,7 +23,7 @@ jobs:
           version: "0.8.3"
 
       - name: Install dependencies
-        run: uv sync --lock
+        run: uv sync --locked
 
       - name: Start server
         run: uv run gunicorn -k uvicorn.workers.UvicornWorker -w 4 -b 0.0.0.0:8000 app.main:app
