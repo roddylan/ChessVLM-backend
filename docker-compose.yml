@@ -12,4 +12,10 @@ services:
       GEMINI_KEY: ${GEMINI_KEY}
     env_file:
       - .env
+    healthcheck:
+      test: ["uv", "run", "pytest", "app/tests"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 3s
 # volumes:
