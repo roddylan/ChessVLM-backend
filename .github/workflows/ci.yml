@@ -15,7 +15,8 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      *setup
+      - *setup
+      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
