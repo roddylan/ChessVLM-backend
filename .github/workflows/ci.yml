@@ -30,8 +30,16 @@ jobs:
       - name: Start server
         run: uv run gunicorn -k uvicorn.workers.UvicornWorker -w 4 -b 0.0.0.0:8000 app.main:app --daemon
 
+      - name: Wait 3s
+        run: sleep 3
+
       - name: Run tests
-        run: uv run pytest app/tests
+        uses: nick-fields/retry@v3
+        with:
+          timeout_seconds: 10
+          max_attempts: 5
+          retry_on: fail
+          command: uv run pytest app/tests
   
   # build-docker:
   #   runs-on: ubuntu-latest
