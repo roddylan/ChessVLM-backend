@@ -26,7 +26,7 @@ jobs:
         run: uv sync --locked
 
       - name: Start server
-        run: uv run gunicorn -k uvicorn.workers.UvicornWorker -w 4 -b 0.0.0.0:8000 app.main:app
+        run: uv run fastapi dev app/main.py
 
       - name: Run tests
         run: uv run pytest app/tests
