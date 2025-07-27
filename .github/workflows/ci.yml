@@ -64,7 +64,7 @@ jobs:
           max_attempts: 5
           retry_wait_seconds: 3
           command: |
-            STATUS=$(docker inspect -f '{{.State.Health.Status}}' myapp-container)
+            STATUS=$(docker inspect -f '{{.State.Health.Status}}' cvlm_api)
             echo "Health status: $STATUS"
             [ "$STATUS" = "healthy" ]
           
