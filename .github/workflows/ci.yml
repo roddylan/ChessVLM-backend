@@ -29,4 +29,7 @@ jobs:
 
       - name: Start server
       - run: uv run gunicorn -k uvicorn.workers.UvicornWorker -w 4 -b 0.0.0.0:8000 app.main:app
+
+      - name: Run testes
+      - run: uv run pytest app/tests
       
