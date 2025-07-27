@@ -5,11 +5,17 @@ services:
       dockerfile: ./Dockerfile
     # volumes:
     #   - .:/cvlmback
-    container_name: cvlm
+    container_name: cvlm_api
     ports:
       - "8000:8000"
     environment:
       GEMINI_KEY: ${GEMINI_KEY}
     env_file:
       - .env
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://0.0.0.0:8000/healthcheck']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 3s
 # volumes:

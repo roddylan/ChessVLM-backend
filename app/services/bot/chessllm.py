@@ -90,7 +90,7 @@ def run_gemini(gem: str, model: str="gemini-2.0-flash-lite", player='w', opponen
     res = {
         "fen": "",
         "move": "",
-        "resp": "",
+        "resp": [],
         "isvalid": False,
         "iserr": False,
         "err": "",
@@ -143,11 +143,11 @@ def run_gemini(gem: str, model: str="gemini-2.0-flash-lite", player='w', opponen
         res["move"] = move_str
         res["fen"] = new_fen
 
-        print(f"\n\n{resp}\n\n")
+        # print(f"\n\n{resp}\n\n")
     except Exception as e:
         res["iserr"] = True
-        res["err"] = e
-        print(f"\n\nModel unavailable\n{e}\n\n")
+        res["err"] = f"{type(e).__name__}: {e}"
+        # print(f"\n\nModel unavailable\n{e}\n\n")
 
     return res
 

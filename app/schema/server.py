@@ -9,7 +9,7 @@ class Receive(BaseModel):
 
 class Send(BaseModel):
     fen: str
-    resp: str
+    resp: list
     isvalid: bool
     iserr: bool
     err: str
