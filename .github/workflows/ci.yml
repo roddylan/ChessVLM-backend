@@ -2,9 +2,7 @@ name: chessllm CI
 
 on:
   push:
-    branches: ["**"]
   pull_request:
-    branches: ["**"]
 
 jobs:
   build-and-test:
@@ -28,8 +26,8 @@ jobs:
         run: uv sync --lock
 
       - name: Start server
-      - run: uv run gunicorn -k uvicorn.workers.UvicornWorker -w 4 -b 0.0.0.0:8000 app.main:app
+        run: uv run gunicorn -k uvicorn.workers.UvicornWorker -w 4 -b 0.0.0.0:8000 app.main:app
 
-      - name: Run testes
-      - run: uv run pytest app/tests
+      - name: Run tests
+        run: uv run pytest app/tests
       
