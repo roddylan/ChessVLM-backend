@@ -5,19 +5,17 @@ on:
   pull_request:
 
 jobs:
-  # setup:
-  #   uses: ./.github/workflows/setup.yml
+  setup_steps: &setup
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Create .env file
+      run: echo GEMINI_KEY=${{ secrets.GEMINI_KEY }} >> .env
 
   build-and-test:
     runs-on: ubuntu-latest
-    # needs: setup
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Create .env file
-        run: echo GEMINI_KEY=${{ secrets.GEMINI_KEY }} >> .env
-
+      *setup
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
