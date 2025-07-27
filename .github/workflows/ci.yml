@@ -6,12 +6,8 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
-
+    uses: ./.github/workflows/setup.yml
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -26,7 +22,7 @@ jobs:
         run: uv sync --locked
 
       - name: Start server
-        run: uv run fastapi dev app/main.py
+        run: uv run gunicorn -k uvicorn.workers.UvicornWorker -w 4 -b 0.0.0.0:8000 app.main:app
 
       - name: Run tests
         run: uv run pytest app/tests
