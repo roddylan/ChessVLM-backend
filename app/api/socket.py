@@ -14,6 +14,9 @@ async def chess(socket: WebSocket):
             data = await socket.receive_json()
             rec_data = Receive.model_validate(data)
             res = run_gemini(settings.gemini_key, player=rec_data.player, opponent=rec_data.opponent, fen=rec_data.fen)
+            print("-------------")
+            print(res)
+            print("-------------")
             await socket.send_json(res)
     except WebSocketDisconnect:
         return

@@ -90,7 +90,7 @@ def run_gemini(gem: str, model: str="gemini-2.0-flash-lite", player='w', opponen
     res = {
         "fen": "",
         "move": "",
-        "resp": "",
+        "resp": [],
         "isvalid": False,
         "iserr": False,
         "err": "",
