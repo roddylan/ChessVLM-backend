@@ -5,17 +5,14 @@ on:
   pull_request:
 
 jobs:
-  setup_steps: &setup
-    - name: Checkout Code
-      uses: actions/checkout@v4
-
-    - name: Create .env file
-      run: echo GEMINI_KEY=${{ secrets.GEMINI_KEY }} >> .env
-
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - *setup
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: echo GEMINI_KEY=${{ secrets.GEMINI_KEY }} >> .env
       
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -31,7 +28,7 @@ jobs:
         run: uv sync --locked
 
       - name: Start server
-        run: uv run gunicorn -k uvicorn.workers.UvicornWorker -w 4 -b 0.0.0.0:8000 app.main:app
+        run: uv run gunicorn -k uvicorn.workers.UvicornWorker -w 4 -b 0.0.0.0:8000 app.main:app --daemon
 
       - name: Run tests
         run: uv run pytest app/tests
