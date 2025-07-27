@@ -13,7 +13,7 @@ services:
     env_file:
       - .env
     healthcheck:
-      test: ["uv", "run", "pytest", "app/tests"]
+      test: ['CMD', 'curl', 'http://0.0.0.0:8000/healthcheck']
       interval: 5s
       timeout: 5s
       retries: 5
